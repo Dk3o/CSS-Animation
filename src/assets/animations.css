@@ -1,0 +1,33 @@
+#loader {
+    margin: 50px auto;
+    position: relative;
+    animation: ball 10s linear infinite;
+}
+
+#loader:after,
+#loader:before {
+    content: ' ';
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: deepskyblue;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+}
+
+#loader:after {
+    top: auto;
+    bottom: 0px;
+}
+
+@keyframes ball {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

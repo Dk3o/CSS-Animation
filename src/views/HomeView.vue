@@ -6,7 +6,12 @@
   <main>
     <div class="card-list">
       <div class="card-list-row">
-        <Card />
+        <Card>
+          <template #animation>
+            <div id="loader">
+            </div>
+          </template>
+        </Card>
         <Card />
         <Card />
         <Card />
