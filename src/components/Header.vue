@@ -36,7 +36,7 @@
     .nav {
         display: flex;
         justify-content: center;
-        background-color: #51cf5f;
+        background-color: #213f3f;
         padding: 0 50px;
         position: sticky;
         top: 0;

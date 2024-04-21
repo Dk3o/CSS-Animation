@@ -6,10 +6,31 @@
   <main>
     <div class="card-list">
       <div class="card-list-row">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card>
+          <template #animation>
+            <div id="loader">
+            </div>
+          </template>
+        </Card>
+        <Card>
+          <template #animation>
+            <div id="loader2">
+              Whheee...
+            </div>
+          </template>
+        </Card>
+        <Card>
+          <template #animation>
+            <div id="loader3">
+            </div>
+          </template>
+        </Card>
+        <Card>
+          <template #animation>
+            <div id="sunny">
+            </div>
+          </template>
+        </Card>
         <Card />
         <Card />
       </div>
