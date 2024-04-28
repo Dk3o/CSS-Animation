@@ -3,14 +3,14 @@
 </script>
 
 <template>
-      <nav class="nav">
-          <div class="wrapper">
+    <nav class="nav">
+        <div class="wrapper">
             <div class="nav-container">
                 <h1 class="title">
-                    <a href="/">CSS Animation</a>
+                    <a href="/"><span class="css-text">CSS</span><span class="animation-text">Animation</span></a>
                 </h1>
                 <div class="menu">
-                    <RouterLink to="/">Home</RouterLink>
+                    <RouterLink to="/">Animations</RouterLink>
                     <RouterLink to="/about">About</RouterLink>
                 </div>
                 <div class="search">
@@ -31,16 +31,18 @@
     
     a {
         color: #fff;
+        position: relative;
     }
 
     .nav {
         display: flex;
         justify-content: center;
         background-color: #213f3f;
-        padding: 0 50px;
+        padding: 0 80px;
         position: sticky;
         top: 0;
         width: 100%;
+        z-index: 10;
     }
 
     .nav-container {
@@ -51,6 +53,22 @@
         gap: 60px;
     }
 
+    .title a {
+        display: flex;
+    }
+
+    .title a:hover .css-text {
+        background-color: #d133db;
+    }
+    
+
+    .css-text {
+        background-color: #33cedb;
+        padding: 0 10px;
+        border-radius: 5px;
+        transform: rotate(-4deg);
+        margin-right: 6px;
+    }
 
     .menu {
         align-self: normal;
@@ -67,45 +85,49 @@
     }
 
     .menu a:hover {
-        background-color: burlywood;
+        background-color: #356464;
     }
 
     .search {
         display: flex;
+        position: relative;
     }
 
     .search input {
-        /* border-radius: 20px;
-        border-width: 0;
-        height: 40px;
-        width: 402px;
-        outline: 0;
-        padding: 0 18px;
-        font-size: 16px; */
-
-        border-width: 0;
-        height: 40px;
-        width: 402px;
-        outline: 0;
-        padding: 0 12px;
+        height: 32px;
+        width: 180px;
+        padding: 0 40px 0 12px;
         font-size: 16px;
-        background: transparent;
+        background: #355d5d;
         color: #fff;
-        border-bottom: 1px solid;
+        border-radius: 50px;
+        transition: width 0.5s ease;
     }
 
     .search input::placeholder {
         color: #fff;
     }
 
+    .search input:focus,
+    .search input:focus-visible {
+        width: 400px;
+    }
+
     button {
+        height: 32px;
+        display: flex;
         width: 40px;
-        background-color: #fff;
+        background-color: transparent;
         border: 0;
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
-        display: flex;
+        position: absolute;
+        right: 0;
         align-items: center;
         justify-content: center;
+    }
+
+    button:hover {
+        cursor: pointer;
     }
 </style>

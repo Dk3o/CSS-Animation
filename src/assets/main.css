@@ -1,7 +1,8 @@
 @import './base.css';
 
 body {
-  background-color: darkslategray;
+  /* background-color: darkslategray; */
+  background-color: #dfdfdf;
 }
 
 #app {
@@ -13,6 +14,17 @@ body {
 
 a {
   text-decoration: none;
+}
+
+input,
+button {
+  border-width: 0;
+  outline: 0;
+}
+
+button {
+  background-color: transparent;
+  padding: 0;
 }
 
 @media (hover: hover) {

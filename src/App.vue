@@ -1,13 +1,15 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import Header from './components/Header.vue';
+import Sidenav from './components/Sidenav.vue';
 </script>
 
 <template>
   <Header />
-
   <RouterView />
+  <Sidenav />
 </template>
+
 
 <style scoped>
 header {

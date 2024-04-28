@@ -80,8 +80,8 @@
 
 /* Loader3 */
 #loader3 {
-    width: calc(100% / 2);
-    height: calc(100% / 2);
+    width: 50%;
+    height: 50%;
     position: relative;
     animation: example 5s infinite;
 }
@@ -96,20 +96,20 @@
 
     25% {
         background-color: yellow;
-        left: calc(100% /2);
+        left: 50%;
         top: 0px;
     }
 
     50% {
         background-color: blue;
-        left: calc(100% /2);
-        top: calc(100% /2);
+        left: 50%;
+        top: 50%;
     }
 
     75% {
         background-color: green;
         left: 0px;
-        top: calc(100% /2);
+        top: 50%;
     }
 
     100% {
