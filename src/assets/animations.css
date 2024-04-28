@@ -155,3 +155,43 @@
         background-color: orangered;
     }
 }
+
+.rotate {
+    display: flex;
+    animation: rotate 5s linear infinite;
+    margin: 0 auto;
+    color: #868686;
+    height: 120px;
+    align-self: center;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.bounce {
+    display: flex;
+    animation: bounce 1s ease infinite;
+    justify-content: center;
+    align-self: center;
+    margin: 0 auto;
+    color: #868686;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
