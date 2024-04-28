@@ -1,3 +1,12 @@
+<script setup>
+    // import { useSidenavStore } from '@/stores/sidenav'
+    // const sidenavStore = useSidenavStore();
+
+    // const handleCard = () => {
+    //     sidenavStore.isActive = true;
+    // }
+</script>
+
 <template>
     <div class="card">
         <div class="animation">
@@ -20,7 +29,6 @@
 
     .card:hover {
         cursor: pointer;
-        background-color: blueviolet;
     }
 
     .animation {
