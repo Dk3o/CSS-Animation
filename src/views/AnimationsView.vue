@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue';
   import Card from '../components/Card.vue';
   import { useDataStore } from "@/stores/data"
   import { useSidenavStore } from "@/stores/sidenav"
@@ -11,52 +12,44 @@
     dataStore.selectedAnimation(index)
   }
 
+  const filteredAnimations = computed(() => {
+    const searchTerm = dataStore.searchTerm.toLowerCase();
+    
+    return dataStore.animations.filter(animation => {
+      const nameMatches = animation.name.toLowerCase().includes(searchTerm);
+      const tagMatches = animation.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+      const textMatches = animation.text.toLowerCase().includes(searchTerm);
+      
+      return nameMatches || tagMatches || textMatches;
+    });
+  })
+
 </script>
 
 <template>
   <main>
     <div class="card-list">
-      <!-- <div class="card-list-row"> -->
-
       <Card
-        v-for="(item, index) in dataStore.animations" 
+        v-for="(item, index) in filteredAnimations" 
         :key="index"
         @click="handleCard(index)"
       >
         <template #animation>
-            <div :id="item.id">
+            <div :id="item.id" v-if="item.attribute === 'id'">
+              <template v-if="item.name">
+                {{ item.text }}
+              </template>
+            </div>
+            <div :class="item.id" v-else>
               <template v-if="item.name">
                 {{ item.text }}
               </template>
             </div>
         </template>
+        <div>
+          {{ item.name }}
+        </div>
       </Card>
-        <!-- <Card>
-          <template #animation>
-            <div id="loader">
-            </div>
-          </template>
-        </Card>
-        <Card>
-          <template #animation>
-            <div id="loader2">
-              Whheee...
-            </div>
-          </template>
-        </Card>
-        <Card>
-          <template #animation>
-            <div id="loader3">
-            </div>
-          </template>
-        </Card>
-        <Card>
-          <template #animation>
-            <div id="sunny">
-            </div>
-          </template>
-        </Card> -->
-      <!-- </div> -->
     </div>
   </main>
 </template>
