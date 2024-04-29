@@ -1,12 +1,36 @@
 <script setup>
+    import { ref } from 'vue'
     import { useSidenavStore } from '@/stores/sidenav';
     import { useDataStore } from '@/stores/data';
     const sidenavStore = useSidenavStore();
     const dataStore = useDataStore();
+
+    const isPressed = ref(false)
+    const copyText = ref("Copy code")
+    
+
     const handleCloseSidenav = () => {
         sidenavStore.isActive = !sidenavStore.isActive
     }
 
+    const copyHtmlCode = () => {
+        copyToClipboard(dataStore.animationSelected.html)
+    }
+
+    const copyCssCode = () => {
+        copyToClipboard(dataStore.animationSelected.css)
+    }
+
+    const copyToClipboard = (text) => {
+        navigator.clipboard.writeText(text).then(() => {
+            copyText.value = "copied!"
+        // Optionally, show a success message to the user
+        })
+        .catch((error) => {
+            console.error('Failed to copy text to clipboard:', error);
+        // Optionally, show an error message to the user
+        });
+    };
 </script>
 
 <template>
@@ -19,17 +43,33 @@
                 X
             </button>
         </div>
+        <!-- make as component -->
         <div class="sidenav-selected-animation-html">
-            <div class="sidenav-selected-animation-html-code">
-                <span>
-                    {{ dataStore.animationSelected.html}}
-                </span>
+            <div class="sidenav-selected-animation-code-container">
+                <div class="sidenav-code-header">
+                        <span>HTML</span>
+                        <button @click="copyHtmlCode">{{copyText}}</button>
+                    </div>
+                <div class="sidenav-selected-animation-html-code">
+                    <span>
+                        {{ dataStore.animationSelected.html}}
+                    </span>
+                </div>
             </div>
         </div>
         <div class="sidenav-selected-animation-css">
-            <pre class="sidenav-selected-animation-css-code">
-                {{ dataStore.animationSelected.css}}
-            </pre>
+            <div class="sidenav-selected-animation-code-container">
+                <div class="sidenav-code-header">
+                    <span>CSS</span>
+                    <button @click="copyCssCode">
+                        <span>&#x2398;</span>
+                        <span>{{copyText}}</span>
+                    </button>
+                </div>
+                <pre class="sidenav-selected-animation-css-code">
+                    {{ dataStore.animationSelected.css}}
+                </pre>
+            </div>
         </div>
     </div>
 </template>
@@ -82,13 +122,29 @@
         padding: 0 8px;
     }
 
+    .sidenav-code-header {
+        background-color: #406767;
+        font-size: 12px;
+        padding: 2px 14px;
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .sidenav-code-header button {
+        cursor: pointer;
+    }
+
     .sidenav-selected-animation-html-code,
     .sidenav-selected-animation-css-code
      {
         background-color: #213f3f;
         font-size: 12px;
         color: #fff;
-        border-radius: 6px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
     }
 
     .sidenav-selected-animation-html-code {
@@ -100,10 +156,9 @@
     }
 
     .sidenav-selected-animation-css-code {
-        padding: 0px 14px;
         text-align: left;
         white-space: pre-line;
+        padding: 0 14px;
     }
-
 
 </style>
