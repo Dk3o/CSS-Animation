@@ -88,6 +88,7 @@
         gap: 18px;
         flex-direction: column;
         overflow-y: auto;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
     }
 
     .sidenav-header {
