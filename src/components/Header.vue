@@ -1,5 +1,10 @@
 <script setup>
+    import { ref } from 'vue'
     import { RouterLink, RouterView } from 'vue-router'
+    import { useDataStore } from '@/stores/data';
+
+    const dataStore = useDataStore()
+
 </script>
 
 <template>
@@ -14,7 +19,7 @@
                     <RouterLink to="/about">About</RouterLink>
                 </div>
                 <div class="search">
-                    <input type="text" placeholder="search animation"/>
+                    <input type="text" placeholder="search animation" v-model="dataStore.searchTerm"/>
                     <button type="submit">
                         <svg style="height:1em;" viewBox="0 0 12 13"><g stroke-width="2" stroke="#999999" fill="none"><path d="M11.29 11.71l-4-4"/><circle cx="5" cy="5" r="4"/></g></svg>
                     </button>
