@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
   import Card from '../components/Card.vue';
   import { useDataStore } from "@/stores/data"
   import { useSidenavStore } from "@/stores/sidenav"
@@ -9,6 +9,7 @@ import { computed } from 'vue';
 
   const handleCard = (index) => {
     sidenavStore.isActive = true
+    dataStore.activeIndex = index
     dataStore.selectedAnimation(index)
   }
 
@@ -32,6 +33,7 @@ import { computed } from 'vue';
       <Card
         v-for="(item, index) in filteredAnimations" 
         :key="index"
+        :isActive="dataStore.activeIndex === index"
         @click="handleCard(index)"
       >
         <template #animation>
