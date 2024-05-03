@@ -11,6 +11,7 @@
 
     const handleCloseSidenav = () => {
         sidenavStore.isActive = !sidenavStore.isActive
+        dataStore.activeIndex = null
     }
 
     const copyHtmlCode = () => {

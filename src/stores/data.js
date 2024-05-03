@@ -4,6 +4,8 @@ import { ref, computed } from "vue";
 export const useDataStore = defineStore('data', () => {
     const animationSelected = ref(null)
     const searchTerm = ref('')
+    const activeIndex = ref(null)
+    
     const animations = [
       {
         id: "loader",
